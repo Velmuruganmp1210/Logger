@@ -73,9 +73,40 @@ public interface LoggerWithConfiguration {
      * @param message the message
      */
     void log(LogLevel level , String message);
+
+    /**
+     * Logs the message with INFO Level.
+     *
+     * @param message the message
+     */
     void info(String message);
+
+    /**
+     * Logs the message with ERROR Level.
+     *
+     * @param message the message
+     */
     void error(String message);
+
+    /**
+     * Logs the message with DEBUG Level.
+     *
+     * @param message the message
+     */
     void debug(String message);
+
+    /**
+     * Logs the message with WARN Level.
+     *
+     * @param message the message
+     */
     void warn(String message);
+
+    /**
+     * Logs the message with TRACE Level.
+     *
+     * @param message the message
+     */
     void trace(String message);
+
 }
