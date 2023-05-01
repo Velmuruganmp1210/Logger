@@ -73,5 +73,9 @@ public interface LoggerWithConfiguration {
      * @param message the message
      */
     void log(LogLevel level , String message);
-
+    void info(String message);
+    void error(String message);
+    void debug(String message);
+    void warn(String message);
+    void trace(String message);
 }

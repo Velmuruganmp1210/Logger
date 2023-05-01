@@ -15,23 +15,23 @@ public class UseLoggerApp {
             //To test console Logger
             Logger consoleLogger = new ConsoleLogger();
             consoleLogger.setup(Logger.LogLevel.DEBUG, LOG_PATTERN_FORMAT, UseLoggerApp.class);
-            consoleLogger.log(Logger.LogLevel.INFO, "Logging from Use logger with console logger");
+            consoleLogger.info("Logging from Use logger with console logger");
 
             //To test file Logger
             LoggerWithConfiguration fileLogger = new FileLogger();
             Configuration configuration = new Configuration();
             configuration.setFilename("log/app.log");
             fileLogger.setup(LoggerWithConfiguration.LogLevel.WARN, LOG_PATTERN_FORMAT, UseLoggerApp.class, configuration);
-            fileLogger.log(LoggerWithConfiguration.LogLevel.DEBUG, "Logging from Use logger with File logger");
+            fileLogger.warn("Logging from Use logger with File logger");
 
             //To test http Logger
             try {
                 LoggerWithConfiguration httpLogger = new HttpLogger();
                 configuration.setApiUrl("API");
                 httpLogger.setup(LoggerWithConfiguration.LogLevel.DEBUG, LOG_PATTERN_FORMAT, UseLoggerApp.class, configuration);
-                httpLogger.log(LoggerWithConfiguration.LogLevel.INFO, "Logging from Use logger with http logger");
+                httpLogger.info("Logging from Use logger with http logger");
             } catch (Exception e) {
-                consoleLogger.log(Logger.LogLevel.ERROR, "Logging from Use logger with console logger for HTTP Logger");
+                consoleLogger.error("Logging from Use logger with console logger for HTTP Logger");
             }
 
             //To test RollingFileLogger
@@ -39,7 +39,7 @@ public class UseLoggerApp {
             configuration.setFilename("target/log4j2/app.log");
             configuration.setFilePattern("target/log4j2/app.%d{MM-dd-yyyy-HH-mm}.log.gz");
             rollingFileLogger.setup(LoggerWithConfiguration.LogLevel.WARN, LOG_PATTERN_FORMAT, UseLoggerApp.class, configuration);
-            rollingFileLogger.log(LoggerWithConfiguration.LogLevel.INFO, "Logging from Use logger with rollingFileLogger");
+            rollingFileLogger.info("Logging from Use logger with rollingFileLogger");
 
             //To test Email Logger
             LoggerWithConfiguration emailLogger = new EmailLogger();
@@ -47,7 +47,7 @@ public class UseLoggerApp {
             smtpDetail.setHostname("Hostname");
             configuration.setSMTPDetails(smtpDetail);
             emailLogger.setup(LoggerWithConfiguration.LogLevel.WARN, LOG_PATTERN_FORMAT, UseLoggerApp.class, configuration);
-            emailLogger.log(LoggerWithConfiguration.LogLevel.INFO, "Logging from Use logger with email logger");
+            emailLogger.info("Logging from Use logger with email logger");
 
     }
 }

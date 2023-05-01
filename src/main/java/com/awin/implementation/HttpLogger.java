@@ -69,4 +69,42 @@ public class HttpLogger implements LoggerWithConfiguration {
     public void log(LogLevel level, String message) {
         logger.log(Level.valueOf(level.toString()),message);
     }
+
+    /**
+     * Logs message with INFO level
+     * @param message
+     */
+    @Override
+    public void info(String message) {
+        logger.log(Level.INFO,message);
+    }
+    /**
+     * Logs message with ERROR level
+     * @param message
+     */
+    @Override
+    public void error(String message) {
+        logger.log(Level.ERROR,message);
+    }
+    /**
+     * Logs message with DEBUG level
+     * @param message
+     */
+    @Override
+    public void debug(String message) {
+        logger.log(Level.DEBUG,message);
+    }
+    /**
+     * Logs message with TRACE level
+     * @param message
+     */
+    @Override
+    public void warn(String message) {
+        logger.log(Level.WARN,message);
+    }
+
+    @Override
+    public void trace(String message) {
+        logger.log(Level.TRACE,message);
+    }
 }
