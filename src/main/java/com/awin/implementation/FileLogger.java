@@ -27,7 +27,7 @@ public class FileLogger implements LoggerWithConfiguration {
     /**
      * The Logger.
      */
-    static org.apache.logging.log4j.Logger logger;
+    static org.apache.logging.log4j.Logger logger = LogManager.getLogger();
 
     /**
      * sets up the root logger leve and all other configurations.
@@ -36,7 +36,7 @@ public class FileLogger implements LoggerWithConfiguration {
      * @param classname    the classname to be used to log
      */
     @Override
-    public void setup(LogLevel level, String pattern, Class classname, com.awin.api.Configuration fileConfiguration) {
+    public synchronized void setup(LogLevel level, String pattern, Class classname, com.awin.api.Configuration fileConfiguration) {
         if(fileConfiguration == null || fileConfiguration.getFilename().isEmpty()){
             throw new RuntimeException("Configuration is required");
         }

@@ -26,7 +26,7 @@ public class EmailLogger implements LoggerWithConfiguration {
     /**
      * The Logger.
      */
-    static org.apache.logging.log4j.Logger logger;
+    static org.apache.logging.log4j.Logger logger = LogManager.getLogger();
 
     /**
      * sets up the root logger leve and all other configurations.
@@ -35,7 +35,7 @@ public class EmailLogger implements LoggerWithConfiguration {
      * @param classname    the classname to be used to log
      */
     @Override
-    public void setup(LogLevel level, String pattern, Class classname, com.awin.api.Configuration configuration) {
+    public synchronized void setup(LogLevel level, String pattern, Class classname, com.awin.api.Configuration configuration) {
         if(configuration == null || configuration.getSMTPDetails()==null){
             throw new RuntimeException("Configuration is required");
         }

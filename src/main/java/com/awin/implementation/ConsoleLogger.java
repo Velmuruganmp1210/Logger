@@ -26,7 +26,7 @@ public class ConsoleLogger implements Logger {
     /**
      * The Logger.
      */
-    static org.apache.logging.log4j.Logger logger;
+    static org.apache.logging.log4j.Logger logger = LogManager.getLogger();
 
     /**
      * sets up the root logger leve and all other configurations.
@@ -35,7 +35,7 @@ public class ConsoleLogger implements Logger {
      * @param classname    the classname to be used to log
      */
     @Override
-    public void setup(LogLevel level, String pattern, Class classname) {
+    public synchronized void  setup(LogLevel level, String pattern, Class classname) {
         logger = LogManager.getLogger(classname);
         config.getRootLogger().setLevel(Level.valueOf(level.toString()));
         PatternLayout layout = PatternLayout.newBuilder().withPattern(pattern).build();

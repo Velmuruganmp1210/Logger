@@ -29,7 +29,7 @@ public class HttpLogger implements LoggerWithConfiguration {
     /**
      * The Logger.
      */
-    static org.apache.logging.log4j.Logger logger;
+    static org.apache.logging.log4j.Logger logger = LogManager.getLogger();
     /**
      * sets up the root logger leve and all other configurations.
      * @param level        the root logger level
@@ -37,7 +37,7 @@ public class HttpLogger implements LoggerWithConfiguration {
      * @param classname    the classname to be used to log
      */
     @Override
-    public void setup(LogLevel level, String pattern, Class classname, com.awin.api.Configuration configuration) {
+    public synchronized void setup(LogLevel level, String pattern, Class classname, com.awin.api.Configuration configuration) {
         logger = LogManager.getLogger(classname);
         config.getRootLogger().setLevel(Level.valueOf(level.toString()));
         PatternLayout layout = PatternLayout.newBuilder().withPattern(pattern).build();
@@ -52,7 +52,7 @@ public class HttpLogger implements LoggerWithConfiguration {
                     .setName("HttpAppender")
                     .build();
         } catch (MalformedURLException e) {
-            logger.error(e.getMessage());
+            throw new RuntimeException("HTTP URL configuration error");
         }
         appender.start();
         config.addAppender(appender);
