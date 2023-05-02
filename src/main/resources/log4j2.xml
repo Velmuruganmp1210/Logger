@@ -14,7 +14,7 @@
     </Appenders>
 
     <Loggers>
-        <Root level="info">
+        <Root level="ERROR">
         </Root>
     </Loggers>
 </Configuration>

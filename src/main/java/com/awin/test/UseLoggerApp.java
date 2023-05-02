@@ -14,9 +14,10 @@ public class UseLoggerApp {
 
         //To test console Logger
         Logger consoleLogger = new ConsoleLogger();
-        consoleLogger.setup(Logger.LogLevel.ERROR, LOG_PATTERN_FORMAT, UseLoggerApp.class);
+       // consoleLogger.setup(Logger.LogLevel.INFO, LOG_PATTERN_FORMAT, UseLoggerApp.class);
+        consoleLogger.setup(Logger.LogLevel.valueOf(System.getenv("ROOT_LEVEL")), LOG_PATTERN_FORMAT, UseLoggerApp.class);
         consoleLogger.info("Logging from Use logger with console logger");
-
+/*
         //To test file Logger
         LoggerWithConfiguration fileLogger = new FileLogger();
         Configuration configuration = new Configuration();
@@ -47,7 +48,7 @@ public class UseLoggerApp {
         smtpDetail.setHostname("Hostname");
         configuration.setSMTPDetails(smtpDetail);
         emailLogger.setup(LoggerWithConfiguration.LogLevel.WARN, LOG_PATTERN_FORMAT, UseLoggerApp.class, configuration);
-        emailLogger.info("Logging from Use logger with email logger");
+        emailLogger.info("Logging from Use logger with email logger");*/
 
     }
 }
